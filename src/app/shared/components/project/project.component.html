@@ -1,0 +1,43 @@
+<mdb-card>
+  <!--Card image-->
+  <a [routerLink]="['/' + project.link]">
+    <mdb-card-img
+      *ngIf="project.photoUrl"
+      src="{{ project.photoUrl }}"
+      alt="Card image cap"
+      class="waves-light"
+      mdbWavesEffect
+    ></mdb-card-img>
+    <mdb-card-img
+      *ngIf="!project.photoUrl"
+      src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg"
+      alt="Card image cap"
+    ></mdb-card-img>
+  </a>
+
+  <!--Card content-->
+  <mdb-card-body>
+    <!--Title-->
+    <mdb-card-title>
+      <a [routerLink]="['/' + project.link]" class="title-link">
+        <h4>{{ project.key }} {{ project.title }}</h4>
+      </a>
+    </mdb-card-title>
+    <hr class="my-2" />
+
+    <!--Text-->
+    <mdb-card-text>
+      {{ project.description }}
+    </mdb-card-text>
+
+    <!--Text-->
+    <mdb-card-text *ngIf="project.sections && project.sections.length">
+      <hr class="my-2" />
+      <ng-container *ngFor="let section of project.sections">
+        <a [routerLink]="['/' + section.link]" class="section-link">
+          <h6>{{ section.key }} {{ section.name }}</h6>
+        </a>
+      </ng-container>
+    </mdb-card-text>
+  </mdb-card-body>
+</mdb-card>

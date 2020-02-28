@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1 class="display-4">{{ script.title }}</h1>
+    <p class="lead">{{ script.subtitle }}</p>
+    <hr class="my-4" />
+    <p>{{ script.shortDescription }}</p>
+    <!-- <a class="btn btn-primary btn-small" [routerLink]="['/o-skripti']"  role="button">Saznaj više...</a> -->
+  </div>
+  <app-projects-list [projects]="predmeti"></app-projects-list>
+</div>
