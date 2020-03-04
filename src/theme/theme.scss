@@ -3,10 +3,15 @@
  * Framework overrides and customization goes here.
  */
 .container-fluid {
-  max-width: 1300px;
+  max-width: 1200px;
 }
 .jumbotron {
   margin-top: 15px;
   padding: 2rem;
   background-color: #f8f9fa;
+}
+@media (min-width: 1200px) {
+  .project {
+    width: calc(25% - 2rem) !important;
+  }
 }
