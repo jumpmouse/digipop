@@ -13,6 +13,7 @@ export interface Skripta {
 }
 
 export interface Predmet {
+  id: string;
   naziv: string;
   link: string;
   opis: string;
@@ -22,17 +23,19 @@ export interface Predmet {
 }
 
 export interface Oblast {
+  id: string;
   naziv: string;
   opis: string;
   link: string;
   URL_slike?: string;
-  programske_celine: ProgramskaCelina[];
+  programske_celine?: ProgramskaCelina[];
 }
 
 export interface ProgramskaCelina {
+  id: string;
   naziv: string;
   link: string;
-  tekst: string;
+  tekst?: string;
   URL_slike?: string;
   podceline?: ProgramskaCelina[];
 }

@@ -1,4 +1,14 @@
-<div class="row">
-  <div class="document-editor__toolbar"></div>
+<div class="container-fluid">
+  <form #articleForm="ngForm" (ngSubmit)="onSubmit()">
+    <ckeditor
+      [config]="config"
+      [editor]="Editor"
+      required
+      name="text"
+      [(ngModel)]="content"
+      data=""
+      (ready)="onReady($event)"
+    ></ckeditor>
+    <button type="submit" class="btn btn-primary" [disabled]="articleForm.invalid">Submit</button>
+  </form>
 </div>
-<ckeditor [config]="config" [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor>

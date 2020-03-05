@@ -7,9 +7,18 @@ import { SharedModule } from '@app/shared';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContentManagementComponent } from './content-management.component';
 import { ContentManagementRoutingModule } from './content-management-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, CoreModule, SharedModule, ContentManagementRoutingModule, CKEditorModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    CoreModule,
+    SharedModule,
+    FormsModule,
+    ContentManagementRoutingModule,
+    CKEditorModule
+  ],
   declarations: [ContentManagementComponent]
 })
 export class ContentManagementModule {}
