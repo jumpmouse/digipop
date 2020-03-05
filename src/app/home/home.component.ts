@@ -9,7 +9,7 @@ import { ProjectsService } from '@app/shared/services/projects.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ContentManagementComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
   predmeti: Project[];

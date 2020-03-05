@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-x-rocket": {
+    "digipop": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -68,12 +68,12 @@
           "options": {
             "hmr": true,
             "hmrWarning": false,
-            "browserTarget": "ng-x-rocket:build"
+            "browserTarget": "digipop:build"
           },
           "configurations": {
             "production": {
               "hmr": false,
-              "browserTarget": "ng-x-rocket:build:production"
+              "browserTarget": "digipop:build:production"
             },
             "ci": {
               "progress": false
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-x-rocket:build"
+            "browserTarget": "digipop:build"
           }
         },
         "test": {
@@ -109,7 +109,7 @@
         }
       }
     },
-    "ng-x-rocket-e2e": {
+    "digipop-e2e": {
       "root": "e2e",
       "projectType": "application",
       "architect": {
@@ -117,7 +117,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-x-rocket:serve"
+            "devServerTarget": "digipop:serve"
           }
         },
         "lint": {
@@ -130,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "ng-x-rocket"
+  "defaultProject": "digipop"
 }

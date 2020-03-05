@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { extract } from '@app/core';
-import { ContentManagementComponent } from './home.component';
+import { ContentManagementComponent } from './content-management.component';
 import { Shell } from '@app/shell/shell.service';
 
 const routes: Routes = [
   Shell.childRoutes([
-    { path: '', component: ContentManagementComponent, data: { title: extract('Home') }, pathMatch: 'full' }
+    {
+      path: 'content-management',
+      component: ContentManagementComponent,
+      pathMatch: 'full'
+    }
   ])
 ];
 
@@ -16,4 +19,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class HomeRoutingModule {}
+export class ContentManagementRoutingModule {}

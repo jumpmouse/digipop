@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
-import { Predmet, Oblast, ContentMetaData } from '@app/models/skripta.model';
+import { Predmet, ContentMetaData } from '@app/models/skripta.model';
 import { SadrzajSripte } from 'src/assets/script-content/script-content.constant';
 import { ActivatedRoute } from '@angular/router';
-import { Project } from '@app/models/project.model';
 import { ProjectsService } from '@app/shared/services/projects.service';
 
 @Component({
@@ -29,7 +28,7 @@ export class CourseSectionComponent implements OnInit {
   }
 
   prepareContent(param: object): string {
-    let oblasti: string = '';
+    let oblasti = '';
     for (let i = 0; i < SadrzajSripte.predmeti.length; i++) {
       const predmet = SadrzajSripte.predmeti[i];
       // tslint:disable-next-line: no-string-literal
