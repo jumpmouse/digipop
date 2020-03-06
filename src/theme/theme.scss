@@ -11,13 +11,15 @@
   background-color: #f8f9fa;
 }
 
-div.ck.ck-content {
+body .ck.ck-content {
   border: 1px solid darkgrey;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 150px);
+  margin-bottom: 8px;
 }
 
 @media (min-width: 1200px) {
   .project {
+    /* stylelint-disable-next-line declaration-no-important */
     width: calc(25% - 2rem) !important;
   }
 }

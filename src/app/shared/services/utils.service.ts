@@ -48,4 +48,11 @@ export class UtilsService {
     }
     return Array(+digits.join('') + 1).join('M') + roman;
   }
+
+  sanitizeFileName(s: string, regex: RegExp, lettersObj: { [key: string]: string }) {
+    const string = s.replace(regex, (match: string) => {
+      return lettersObj[match];
+    });
+    return string.toLowerCase();
+  }
 }

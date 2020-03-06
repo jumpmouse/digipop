@@ -22,6 +22,7 @@ export class ProjectsService {
     });
 
     return {
+      id: predmet.id,
       key: this.utilsService.romanize(index + 1),
       link: predmet.link,
       title: predmet.naziv,
@@ -50,6 +51,7 @@ export class ProjectsService {
     }
 
     return {
+      id: oblast.id,
       key: oblastKey,
       link: parrentLink + '/' + oblast.link,
       title: oblast.naziv,

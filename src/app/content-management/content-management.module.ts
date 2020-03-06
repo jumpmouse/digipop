@@ -8,6 +8,11 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContentManagementComponent } from './content-management.component';
 import { ContentManagementRoutingModule } from './content-management-routing.module';
 import { FormsModule } from '@angular/forms';
+import { CourseManagementComponent } from './components/course-management/course-management.component';
+import { ContentEditingComponent } from './components/content-editing/content-editing.component';
+import { SectionManagementComponent } from './components/section-management/section-management.component';
+import { AddEditCourseComponent } from './components/add-edit-course/add-edit-course.component';
+import { AddEditSectionComponent } from './components/add-edit-section/add-edit-section.component';
 
 @NgModule({
   imports: [
@@ -19,6 +24,13 @@ import { FormsModule } from '@angular/forms';
     ContentManagementRoutingModule,
     CKEditorModule
   ],
-  declarations: [ContentManagementComponent]
+  declarations: [
+    ContentManagementComponent,
+    CourseManagementComponent,
+    ContentEditingComponent,
+    SectionManagementComponent,
+    AddEditCourseComponent,
+    AddEditSectionComponent
+  ]
 })
 export class ContentManagementModule {}

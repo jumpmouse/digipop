@@ -3,22 +3,26 @@ import { Project } from '@app/models/project.model';
 import { DefaultImg } from '../../../../assets/default-img.const';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss'],
+  selector: 'app-editable-project',
+  templateUrl: './editable-project.component.html',
+  styleUrls: ['./editable-project.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProjectComponent implements OnInit {
+export class EditableProjectComponent implements OnInit {
+  @Input() projectType: string;
   @Input() project: Project;
   @Input() editable = true;
   @Output() deleted = new EventEmitter<Project>();
   @Output() edited = new EventEmitter<Project>();
 
   public defaultImg: string = DefaultImg;
+  public link: string;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setupLink();
+  }
 
   onDelete() {
     this.deleted.emit(this.project);
@@ -26,5 +30,14 @@ export class ProjectComponent implements OnInit {
 
   onEdit() {
     this.edited.emit(this.project);
+  }
+
+  private setupLink(): void {
+    this.link =
+      this.projectType === 'course'
+        ? this.project.link
+        : this.project.id
+        ? '/content-management/' + this.project.link + '/edit'
+        : '/content-management/' + this.project.link;
   }
 }

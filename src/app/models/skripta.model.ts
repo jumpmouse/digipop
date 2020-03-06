@@ -39,3 +39,24 @@ export interface ProgramskaCelina {
   URL_slike?: string;
   podceline?: ProgramskaCelina[];
 }
+
+export interface PredmetForEditing {
+  naziv: string;
+  opis: string;
+  kratki_opis: string;
+  URL_slike?: string;
+}
+
+export interface OblastForEditing {
+  naziv: string;
+  opis: string;
+  URL_slike?: string;
+  programske_celine?: ProgramskaCelinaForEditing[];
+}
+
+export interface ProgramskaCelinaForEditing {
+  naziv: string;
+  tekst?: string;
+  URL_slike?: string;
+  podceline?: ProgramskaCelinaForEditing[];
+}

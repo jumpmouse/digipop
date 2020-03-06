@@ -1,0 +1,54 @@
+<mdb-card>
+  <!--Card image-->
+  <a [routerLink]="[link]">
+    <mdb-card-img
+      *ngIf="project.photoUrl"
+      src="{{ project.photoUrl }}"
+      alt="Card image cap"
+      class="waves-light"
+      mdbWavesEffect
+    ></mdb-card-img>
+    <mdb-card-img *ngIf="!project.photoUrl" [src]="defaultImg" alt="Card image cap"></mdb-card-img>
+  </a>
+
+  <!--Card content-->
+  <mdb-card-body>
+    <!--Title-->
+    <mdb-card-title>
+      <a [routerLink]="[link]" class="title-link">
+        <h4 class="text-center">
+          <span *ngIf="project.id">{{ project.key }} </span>{{ project.title }}
+        </h4>
+      </a>
+    </mdb-card-title>
+    <hr *ngIf="project.id" class="my-2" />
+
+    <!--Text-->
+    <mdb-card-text *ngIf="projectType === 'course' && project.id" class="text-center">
+      <br />
+      <a class="btn btn-primary" [routerLink]="[link, 'edit']">Izmeni predmet</a>
+      <br />
+      <br />
+      <a class="btn btn-primary" [routerLink]="[link]">Dodaj/izmeni oblast</a>
+    </mdb-card-text>
+
+    <mdb-card-text *ngIf="projectType === 'section' && project.id" class="text-center">
+      <br />
+      <a class="btn btn-primary" [routerLink]="[link]">Izmeni oblast</a>
+      <br />
+      <br />
+      <a class="btn btn-primary" [routerLink]="[link + '-content']">Dodaj/izmeni sadržaj</a>
+    </mdb-card-text>
+
+    <!-- Text-->
+    <mdb-card-text *ngIf="project.sections && project.sections.length">
+      <hr class="my-2" />
+      <h5>
+        <u>{{ projectType === 'course' ? 'Oblasti:' : 'Sekcije:' }}</u>
+      </h5>
+      <ng-container *ngFor="let section of project.sections">
+        <h6>{{ section.key }} {{ section.name }}</h6>
+      </ng-container>
+    </mdb-card-text>
+  </mdb-card-body>
+</mdb-card>

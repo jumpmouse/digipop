@@ -8,6 +8,8 @@ import { Project } from '@app/models/project.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectsListComponent implements OnInit {
+  @Input() editingMode = false;
+  @Input() projectType = 'course';
   @Input() projects: Project[];
   @Input() editable = true;
   @Output() projectDeleted = new EventEmitter<Project>();
