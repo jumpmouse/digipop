@@ -16,7 +16,7 @@
     "env": "ngx-scripts env npm_package_version",
     "prettier": "prettier --write \"./src/**/*.{ts,js,html,scss}\"",
     "prettier:check": "prettier --list-different \"./src/**/*.{ts,js,html,scss}\"",
-    "pretty-quick": "pretty-quick",
+    "pretty-quick": "pretty-quick --staged",
     "postinstall": "npm run prettier -s",
     "generate": "ng generate"
   },
@@ -89,7 +89,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix && npm run pretty-quick --staged"
+      "pre-commit": "npm run lint:fix && npm run pretty-quick"
     }
   }
 }
