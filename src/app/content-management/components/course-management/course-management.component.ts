@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '@app/models/project.model';
-import { SadrzajSripte } from '../../../../assets/script-content/script-content.constant';
-import { Predmet, ContentMetaData } from '@app/models/skripta.model';
+import { Predmet, ContentMetaData, Skripta } from '@app/models/skripta.model';
 import { ProjectsService } from '@app/shared/services/projects.service';
-import { EmptyCourse } from '@app/content-management/constants/course-management.cont';
+import { ScriptContentService } from '@app/shared/services/script-content.service';
+// import { EmptyCourse } from '@app/content-management/constants/course-management.cont';
 
 @Component({
   selector: 'app-course-management',
@@ -16,26 +16,26 @@ export class CourseManagementComponent implements OnInit {
   predmeti: Project[];
   script: ContentMetaData;
 
-  constructor(private projectsService: ProjectsService) {}
+  constructor(private projectsService: ProjectsService, private scriptContentService: ScriptContentService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.predmeti = this.prepareProjects();
-    this.isLoading = false;
-    this.script = {
-      title: SadrzajSripte.naslov,
-      subtitle: SadrzajSripte.podnaslov,
-      shortDescription: SadrzajSripte.opis_ukratko,
-      description: SadrzajSripte.opis
-    };
+    this.scriptContentService.scriptContent.subscribe(script => {
+      this.predmeti = this.prepareProjects(script);
+      this.isLoading = false;
+      this.script = {
+        title: script.naslov,
+        subtitle: script.podnaslov,
+        shortDescription: script.opis_ukratko,
+        description: script.opis
+      };
+    });
   }
 
-  prepareProjects(): Project[] {
-    const predmeti: Project[] = SadrzajSripte.predmeti.map((predmet: Predmet, index: number) =>
+  prepareProjects(script: Skripta): Project[] {
+    const predmeti: Project[] = Object.entries(script.predmeti).map(([id, predmet]: [string, Predmet], index: number) =>
       this.projectsService.prepareProjectFromPredmet(predmet, index)
     );
-    const emptyCourse: Project = this.projectsService.prepareProjectFromPredmet(EmptyCourse, predmeti.length);
-    predmeti.push(emptyCourse);
     return predmeti;
   }
 }

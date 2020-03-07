@@ -10,7 +10,9 @@ import { DefaultImg } from '../../../../assets/default-img.const';
 })
 export class ProjectComponent implements OnInit {
   @Input() project: Project;
+  @Input() projectType: string;
   @Input() editable = true;
+  @Input() index: number;
   @Output() deleted = new EventEmitter<Project>();
   @Output() edited = new EventEmitter<Project>();
 

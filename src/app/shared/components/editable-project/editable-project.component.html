@@ -1,43 +1,49 @@
 <mdb-card>
   <!--Card image-->
-  <a [routerLink]="[link]">
-    <mdb-card-img
-      *ngIf="project.photoUrl"
-      src="{{ project.photoUrl }}"
-      alt="Card image cap"
-      class="waves-light"
-      mdbWavesEffect
-    ></mdb-card-img>
-    <mdb-card-img *ngIf="!project.photoUrl" [src]="defaultImg" alt="Card image cap"></mdb-card-img>
-  </a>
+  <mdb-card-img
+    *ngIf="project.photoUrl"
+    src="{{ project.photoUrl }}"
+    alt="Card image cap"
+    class="waves-light"
+    mdbWavesEffect
+  ></mdb-card-img>
+  <mdb-card-img *ngIf="!project.photoUrl" [src]="defaultImg" alt="Card image cap"></mdb-card-img>
 
   <!--Card content-->
   <mdb-card-body>
     <!--Title-->
     <mdb-card-title>
-      <a [routerLink]="[link]" class="title-link">
-        <h4 class="text-center">
-          <span *ngIf="project.id">{{ project.key }} </span>{{ project.title }}
-        </h4>
-      </a>
+      <h4 class="text-center">
+        <span *ngIf="project.id">{{ project.key }} </span>{{ project.title }}
+      </h4>
     </mdb-card-title>
     <hr *ngIf="project.id" class="my-2" />
 
     <!--Text-->
-    <mdb-card-text *ngIf="projectType === 'course' && project.id" class="text-center">
-      <br />
-      <a class="btn btn-primary" [routerLink]="[link, 'edit']">Izmeni predmet</a>
-      <br />
-      <br />
-      <a class="btn btn-primary" [routerLink]="[link]">Dodaj/izmeni oblast</a>
+    <mdb-card-text *ngIf="projectType === 'course' && project.id" class="text-center mt-3">
+      <div class="mb-2 text-dark">
+        <a class="btn btn-dark btn-block" [routerLink]="[link, 'edit']" role="button">
+          <i class="mr-2 fas fa-pencil-alt"></i>Izmeni opis predmeta
+        </a>
+      </div>
+      <div class="mb-2 text-dark">
+        <a class="btn btn-warning  btn-block" [routerLink]="[link]" role="button">
+          <i class="mr-2 fas fa-plus"></i>Dodaj/izmeni oblasti
+        </a>
+      </div>
     </mdb-card-text>
 
-    <mdb-card-text *ngIf="projectType === 'section' && project.id" class="text-center">
-      <br />
-      <a class="btn btn-primary" [routerLink]="[link]">Izmeni oblast</a>
-      <br />
-      <br />
-      <a class="btn btn-primary" [routerLink]="[link + '-content']">Dodaj/izmeni sadržaj</a>
+    <mdb-card-text *ngIf="projectType === 'section' && project.id" class="text-center mt-3">
+      <div class="mb-2 text-dark">
+        <a class="btn btn-dark btn-block" [routerLink]="[link]" role="button">
+          <i class="mr-2 fas fa-pencil-alt"></i>Izmeni opis oblasti
+        </a>
+      </div>
+      <div class="mb-2 text-dark">
+        <a class="btn btn-primary btn-block" [routerLink]="[link + '-content']" role="button">
+          <i class="mr-2 fas fa-plus"></i>Dodaj/izmeni sadržaj
+        </a>
+      </div>
     </mdb-card-text>
 
     <!-- Text-->

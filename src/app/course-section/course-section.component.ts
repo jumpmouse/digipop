@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
-import { Predmet, ContentMetaData } from '@app/models/skripta.model';
-import { SadrzajSripte } from 'src/assets/script-content/script-content.constant';
+import { Predmet, ContentMetaData, Skripta } from '@app/models/skripta.model';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectsService } from '@app/shared/services/projects.service';
+import { ScriptContentService } from '@app/shared/services/script-content.service';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-course-section',
@@ -17,32 +17,30 @@ export class CourseSectionComponent implements OnInit {
   content: string;
   section: any;
 
-  constructor(private route: ActivatedRoute, private projectsService: ProjectsService) {}
+  constructor(private route: ActivatedRoute, private scriptContentService: ScriptContentService) {}
 
   ngOnInit() {
-    this.route.params.subscribe(param => {
-      // const courseName: string = param.courseName;
-      // const sectionName: string = param.sectionName;
-      this.content = this.prepareContent(param);
+    combineLatest([this.route.params, this.scriptContentService.scriptContent]).subscribe(([param, script]) => {
+      this.content = this.prepareContent(param, script);
     });
   }
 
-  prepareContent(param: object): string {
+  prepareContent(param: object, script: Skripta): string {
     let oblasti = '';
-    for (let i = 0; i < SadrzajSripte.predmeti.length; i++) {
-      const predmet = SadrzajSripte.predmeti[i];
+    const predmeti = Object.entries(script.predmeti);
+    for (let i = 0; i < predmeti.length; i++) {
+      const predmet = predmeti[i][1];
       // tslint:disable-next-line: no-string-literal
       const courseName = param['courseName'];
       // tslint:disable-next-line: no-string-literal
       const sectionName = param['sectionName'];
 
       if (courseName === predmet.link) {
-        // this.section = this.prepareCourse(predmet);
-        for (let a = 0; a < predmet.oblasti.length; a++) {
-          const oblast = predmet.oblasti[a];
+        const oblastiArray = Object.entries(predmet.oblasti);
+        for (let a = 0; a < oblastiArray.length; a++) {
+          const oblast = oblastiArray[a][1];
           if (sectionName === oblast.link) {
             this.section = oblast;
-            console.log(this.section);
             break;
           }
         }

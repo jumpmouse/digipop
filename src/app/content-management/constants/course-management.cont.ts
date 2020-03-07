@@ -1,37 +1,15 @@
 import {
-  Predmet,
-  Oblast,
-  ProgramskaCelina,
   PredmetForEditing,
   OblastForEditing,
-  ProgramskaCelinaForEditing
+  ProgramskaCelinaForEditing,
+  SkriptaForEditing
 } from '@app/models/skripta.model';
 
-export const EmptyCourse: Predmet = {
-  id: '',
-  naziv: 'Dodaj novi predmet',
-  kratki_opis: '',
-  opis: '',
-  link: 'new-course',
-  URL_slike: '',
-  oblasti: []
-};
-
-export const EmptySection: Oblast = {
-  id: '',
-  naziv: 'Dodaj novu oblast',
-  opis: '',
-  link: 'new-section',
-  URL_slike: '',
-  programske_celine: []
-};
-
-export const EmtySubSection: ProgramskaCelina = {
-  id: '',
-  naziv: 'Dodaj novu sekciju',
-  link: 'new-subsection',
-  URL_slike: '',
-  podceline: []
+export const EmptyScriptForEditing: SkriptaForEditing = {
+  naslov: 'true',
+  podnaslov: 'true',
+  opis_ukratko: 'true',
+  opis: 'true'
 };
 
 export const EmptyCourseForEditing: PredmetForEditing = {
@@ -49,5 +27,5 @@ export const EmptySectionForEditing: OblastForEditing = {
 export const EmtySubSectionForEditing: ProgramskaCelinaForEditing = {
   naziv: 'true',
   tekst: '',
-  podceline: []
+  podceline: {}
 };

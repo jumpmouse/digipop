@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
-import { Predmet, Oblast, ContentMetaData } from '@app/models/skripta.model';
-import { SadrzajSripte } from 'src/assets/script-content/script-content.constant';
+import { Predmet, Oblast, ContentMetaData, Skripta } from '@app/models/skripta.model';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '@app/models/project.model';
 import { ProjectsService } from '@app/shared/services/projects.service';
+import { ScriptContentService } from '@app/shared/services/script-content.service';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-course',
@@ -17,24 +18,29 @@ export class CourseComponent implements OnInit {
   course: ContentMetaData;
   sections: Project[];
 
-  constructor(private route: ActivatedRoute, private projectsService: ProjectsService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private projectsService: ProjectsService,
+    private scriptContentService: ScriptContentService
+  ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(param => {
+    combineLatest([this.route.params, this.scriptContentService.scriptContent]).subscribe(([param, script]) => {
       const courseName: string = param.courseName;
-      this.sections = this.prepareProjects(courseName);
+      this.sections = this.prepareProjects(courseName, script);
     });
   }
 
-  prepareProjects(courseName: string): Project[] {
+  prepareProjects(courseName: string, script: Skripta): Project[] {
     let oblasti: Project[] = [];
-    for (let i = 0; i < SadrzajSripte.predmeti.length; i++) {
-      const predmet = SadrzajSripte.predmeti[i];
+    const predmeti = Object.entries(script.predmeti);
+    for (let i = 0; i < predmeti.length; i++) {
+      const predmet = predmeti[i][1];
       if (courseName === predmet.link) {
         this.course = this.prepareCourse(predmet);
-        oblasti = predmet.oblasti.map((oblast: Oblast, index: number) =>
-          this.projectsService.prepareProjectFromOblast(oblast, courseName, index)
-        );
+        oblasti = Object.entries(predmet.oblasti).map(([id, oblast]: [string, Oblast], index: number) => {
+          return this.projectsService.prepareProjectFromOblast(oblast, courseName, index);
+        });
         break;
       }
     }

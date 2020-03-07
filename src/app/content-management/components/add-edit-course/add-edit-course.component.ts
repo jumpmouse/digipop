@@ -23,7 +23,6 @@ export class AddEditCourseComponent implements OnInit {
       this.fields = Object.keys(this.content);
       this.labels = this.fields.map(label => {
         const required = !!this.content[label];
-        console.log(required);
         if (required) {
           this.content[label] = '';
         }

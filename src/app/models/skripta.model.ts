@@ -9,7 +9,7 @@ export interface Skripta {
   podnaslov: string;
   opis_ukratko: string;
   opis: string;
-  predmeti?: Predmet[];
+  predmeti?: { [key: string]: Predmet };
 }
 
 export interface Predmet {
@@ -19,7 +19,7 @@ export interface Predmet {
   opis: string;
   kratki_opis: string;
   URL_slike?: string;
-  oblasti: Oblast[];
+  oblasti: { [key: string]: Oblast };
 }
 
 export interface Oblast {
@@ -28,7 +28,7 @@ export interface Oblast {
   opis: string;
   link: string;
   URL_slike?: string;
-  programske_celine?: ProgramskaCelina[];
+  programske_celine?: { [key: string]: ProgramskaCelina };
 }
 
 export interface ProgramskaCelina {
@@ -37,7 +37,7 @@ export interface ProgramskaCelina {
   link: string;
   tekst?: string;
   URL_slike?: string;
-  podceline?: ProgramskaCelina[];
+  podceline?: { [key: string]: ProgramskaCelina };
 }
 
 export interface PredmetForEditing {
@@ -51,12 +51,19 @@ export interface OblastForEditing {
   naziv: string;
   opis: string;
   URL_slike?: string;
-  programske_celine?: ProgramskaCelinaForEditing[];
+  programske_celine?: { [key: string]: ProgramskaCelinaForEditing };
 }
 
 export interface ProgramskaCelinaForEditing {
   naziv: string;
   tekst?: string;
   URL_slike?: string;
-  podceline?: ProgramskaCelinaForEditing[];
+  podceline?: { [key: string]: ProgramskaCelinaForEditing };
+}
+
+export interface SkriptaForEditing {
+  naslov: string;
+  podnaslov: string;
+  opis_ukratko: string;
+  opis: string;
 }

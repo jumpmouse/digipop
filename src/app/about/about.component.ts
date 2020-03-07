@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
+import { ScriptContentService } from '@app/shared/services/script-content.service';
 
 @Component({
   selector: 'app-about',
@@ -8,9 +9,14 @@ import { environment } from '@env/environment';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  version: string | null = environment.version;
+  public version: string | null = environment.version;
+  public content: string;
 
-  constructor() {}
+  constructor(private scriptContentService: ScriptContentService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.scriptContentService.scriptContent.subscribe(script => {
+      this.content = script.opis;
+    });
+  }
 }

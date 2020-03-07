@@ -13,6 +13,7 @@ import { ContentEditingComponent } from './components/content-editing/content-ed
 import { SectionManagementComponent } from './components/section-management/section-management.component';
 import { AddEditCourseComponent } from './components/add-edit-course/add-edit-course.component';
 import { AddEditSectionComponent } from './components/add-edit-section/add-edit-section.component';
+import { EditScriptComponent } from './components/edit-script/edit-script.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { AddEditSectionComponent } from './components/add-edit-section/add-edit-
     ContentEditingComponent,
     SectionManagementComponent,
     AddEditCourseComponent,
-    AddEditSectionComponent
+    AddEditSectionComponent,
+    EditScriptComponent
   ]
 })
 export class ContentManagementModule {}

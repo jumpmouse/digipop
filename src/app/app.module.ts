@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '@env/environment';
 import { CoreModule } from '@app/core';
@@ -26,7 +26,6 @@ import { ContentManagementModule } from './content-management/content-management
     FormsModule,
     HttpClientModule,
     TranslateModule.forRoot(),
-    NgbModule,
     CoreModule,
     SharedModule,
     ShellModule,

@@ -8,7 +8,7 @@
       class="waves-light"
       mdbWavesEffect
     ></mdb-card-img>
-    <mdb-card-img *ngIf="!project.photoUrl" [src]="defaultImg" alt="Card image cap"></mdb-card-img>
+    <mdb-card-img *ngIf="!project.photoUrl" [src]="defaultImg" alt="Card image cap"> </mdb-card-img>
   </a>
 
   <!--Card content-->
@@ -16,7 +16,7 @@
     <!--Title-->
     <mdb-card-title>
       <a [routerLink]="['/' + project.link]" class="title-link">
-        <h4 class="text-center">{{ project.key }} {{ project.title }}</h4>
+        <h4 class="text-center"><i class="fas fa-link h5 text-info"></i> {{ project.key }} {{ project.title }}</h4>
       </a>
     </mdb-card-title>
     <hr class="my-2" />
@@ -29,11 +29,17 @@
     <!--Text-->
     <mdb-card-text *ngIf="project.sections && project.sections.length">
       <hr class="my-2" />
-      <ng-container *ngFor="let section of project.sections">
-        <a [routerLink]="['/' + section.link]" class="section-link">
-          <h6>{{ section.key }} {{ section.name }}</h6>
-        </a>
-      </ng-container>
+      <ngb-accordion #acc="ngbAccordion" type="dark" [activeIds]="projectType === 'section' ? 'static-' + index : ''">
+        <ngb-panel title="Sadržaj" [id]="'static-' + index">
+          <ng-template ngbPanelContent>
+            <ng-container *ngFor="let section of project.sections">
+              <a [routerLink]="['/' + section.link]" class="section-link h5 d-block">
+                <small>{{ section.key }} {{ section.name }}</small>
+              </a>
+            </ng-container>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
     </mdb-card-text>
   </mdb-card-body>
 </mdb-card>
