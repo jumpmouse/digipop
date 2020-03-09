@@ -14,25 +14,16 @@ export class ContentEditingComponent implements OnInit {
   public config = EditorConfig;
   public content = '';
   public title = 'xy-oblast';
-  private replaceStringRegex = /[čćđžšČĆĐŽŠ]/g;
-  private replaceStrings = {
-    č: 'c',
-    ć: 'c',
-    đ: 'd',
-    ž: 'z',
-    š: 's',
-    Č: 'C',
-    Ć: 'C',
-    Đ: 'D',
-    Ž: 'Z',
-    Š: 'S'
-  };
 
-  constructor(private utilsService: UtilsService, private route: ActivatedRoute) {}
+  constructor(
+    private utilsService: UtilsService,
+    private route: ActivatedRoute
+    ) {}
 
   ngOnInit() {
     this.route.params.subscribe(param => {
-      this.title = param.sectionName;
+      console.log(param);
+      this.title = `${param.sectionName}_${param.subsectionName}`;
     });
   }
 
@@ -49,22 +40,8 @@ export class ContentEditingComponent implements OnInit {
       if (i !== 0) {
         fileName += '-';
       }
-      fileName += this.utilsService.sanitizeFileName(nameArray[i], this.replaceStringRegex, this.replaceStrings);
+      fileName += this.utilsService.sanitizeFileName(nameArray[i]);
     }
-    this.download(fileName + '.txt', this.content);
-  }
-
-  private download(filename: string, text: string): void {
-    const downloadElement = document.createElement('a');
-    downloadElement.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    downloadElement.setAttribute('download', filename);
-
-    if (document.createEvent) {
-      const event = document.createEvent('MouseEvents');
-      event.initEvent('click', true, true);
-      downloadElement.dispatchEvent(event);
-    } else {
-      downloadElement.click();
-    }
+    this.utilsService.downloadDocument(fileName + '.txt', this.content);
   }
 }
