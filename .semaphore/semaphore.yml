@@ -8,13 +8,15 @@ blocks:
   - name: Set things up
     task:
       jobs:
-        - name: Compile
+        - name: Lint and Compile
           commands:
             - checkout
+            - npm i
             - echo "Linting code"
             - npm run prettier
             - 'npm run lint:fix'
             - echo "Compiling code"
+            - npm run build
   - name: Unit tests
     task:
       jobs:
