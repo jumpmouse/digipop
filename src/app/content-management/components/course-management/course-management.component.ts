@@ -3,7 +3,6 @@ import { Project } from '@app/models/project.model';
 import { Predmet, ContentMetaData, Skripta } from '@app/models/skripta.model';
 import { ProjectsService } from '@app/shared/services/projects.service';
 import { ScriptContentService } from '@app/shared/services/script-content.service';
-// import { EmptyCourse } from '@app/content-management/constants/course-management.cont';
 
 @Component({
   selector: 'app-course-management',

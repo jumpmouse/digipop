@@ -12,23 +12,21 @@ export class ProjectsService {
   constructor(private utilsService: UtilsService) {}
 
   prepareProjectFromPredmet(predmet: Predmet, index: number): Project {
-    // oblasti =
-    // Object.entries(predmet.oblasti).map(([id, oblast]: [string, Oblast], index: number) =>
-
-    const sections: SimpleLinkObject[] = Object.entries(predmet.oblasti).map(
-      ([id, oblast]: [string, Oblast], i: number) => {
-        const key = (i + 1).toString() + '.';
-        return {
-          key,
-          name: oblast.naziv,
-          link: predmet.link + '/' + oblast.link
-        };
-      }
-    );
+    const sections: SimpleLinkObject[] = 
+      Object.entries(predmet.oblasti).map(
+        ([id, oblast]: [string, Oblast]) => {
+          const key = oblast.id.split('-').join('.') + '.';
+          return {
+            key,
+            name: oblast.naziv,
+            link: `${predmet.link}/${oblast.link}`
+          };
+        }
+      );
 
     return {
       id: predmet.id,
-      key: this.utilsService.romanize(index + 1),
+      key: predmet.id,
       link: predmet.link,
       title: predmet.naziv,
       description: predmet.kratki_opis,
@@ -36,16 +34,19 @@ export class ProjectsService {
       sections
     };
   }
-  prepareProjectFromOblast(oblast: Oblast, parrentLink: string, index: number): Project {
-    const oblastKey = (index + 1).toString() + '.';
+
+  prepareProjectFromOblast(oblast: Oblast, parrentLink: string): Project {
+    const oblastKey = oblast.id.split('-').join('.') + '.';
+    const oblastLink = parrentLink + '/' + oblast.link;
     this.sections = [];
+    
     const programskeCeline = Object.entries(oblast.programske_celine);
     for (let i = 0; i < programskeCeline.length; i++) {
       const programskaCelina = programskeCeline[i][1];
-      const key = (i + 1).toString() + '.';
-      const oblastLink = parrentLink + '/' + oblast.link;
+
+      const key = programskaCelina.id.split('-').join('.') + '.';
       const simpleLinkObject: SimpleLinkObject = {
-        key: oblastKey + key,
+        key,
         name: programskaCelina.naziv,
         // link: oblastLink + '#' + programskaCelina.link
         link: oblastLink
@@ -54,7 +55,7 @@ export class ProjectsService {
       if (programskaCelina.podceline) {
         const podceline = Object.values(programskaCelina.podceline);
         if (podceline && podceline.length) {
-          this.addSubsectionsRecursively(podceline, simpleLinkObject.key, oblastLink);
+          this.addSubsectionsRecursively(podceline, oblastLink);
         }
       }
     }
@@ -62,7 +63,7 @@ export class ProjectsService {
     return {
       id: oblast.id,
       key: oblastKey,
-      link: parrentLink + '/' + oblast.link,
+      link: oblastLink,
       title: oblast.naziv,
       description: oblast.opis,
       photoUrl: oblast.URL_slike,
@@ -70,12 +71,13 @@ export class ProjectsService {
     };
   }
 
-  private addSubsectionsRecursively(podceline: ProgramskaCelina[], parrentKey: string, parrentLink: string): void {
+
+  private addSubsectionsRecursively(podceline: ProgramskaCelina[], parrentLink: string): void {
     for (let i = 0; i < podceline.length; i++) {
       const podcelina = podceline[i];
-      const key = (i + 1).toString() + '.';
+      const key = podcelina.id.split('-').join('.') + '.';
       const simpleLink = {
-        key: parrentKey + key,
+        key,
         name: podcelina.naziv,
         // link: parrentLink + '#' + podcelina.link
         link: parrentLink
@@ -84,7 +86,7 @@ export class ProjectsService {
       if (podcelina.podceline) {
         const subPodceline = Object.values(podcelina.podceline);
         if (subPodceline && subPodceline.length) {
-          this.addSubsectionsRecursively(subPodceline, simpleLink.key, parrentLink);
+          this.addSubsectionsRecursively(subPodceline, parrentLink);
         }
       }
     }

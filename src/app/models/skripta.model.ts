@@ -41,6 +41,7 @@ export interface ProgramskaCelina {
 }
 
 export interface PredmetForEditing {
+  id: string;
   naziv: string;
   opis: string;
   kratki_opis: string;

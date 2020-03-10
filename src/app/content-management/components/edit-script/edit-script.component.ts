@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmptyScriptForEditing } from '../../constants/course-management.cont';
+import { EmptyScriptForEditing } from '../../constants/course-management.const';
 import { ScriptContentService } from '@app/shared/services/script-content.service';
 import { Router } from '@angular/router';
 

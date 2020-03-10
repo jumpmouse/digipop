@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Skripta } from '@app/models/skripta.model';
+import { Skripta, Predmet, OblastForEditing, Oblast } from '@app/models/skripta.model';
 import { SadrzajSkripte } from 'src/assets/script-content/script-content.constant';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UtilsService } from './utils.service';
@@ -15,6 +15,14 @@ export class ScriptContentService {
 
   get scriptContent(): Observable<Skripta> {
     return this.currentScriptContent$.asObservable();
+  }
+
+  public addUpdateCourse(course: Predmet) {
+
+  }
+
+  public addUpdateSection(section: Oblast, courseId: string) {
+
   }
 
   public setScriptContent(scriptObject: Skripta) {

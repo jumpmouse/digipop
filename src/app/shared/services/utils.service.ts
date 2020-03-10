@@ -36,7 +36,7 @@ export class UtilsService {
     'VIII',
     'IX'
   ];
-  private replaceStringRegex = /[čćđžšČĆĐŽŠ.]/g;
+  private replaceStringRegex = /[čćđžšČĆĐŽŠ._]/g;
   private replaceStrings = {
     č: 'c',
     ć: 'c',
@@ -48,12 +48,13 @@ export class UtilsService {
     Đ: 'D',
     Ž: 'Z',
     Š: 'S',
-    '.': ' '
+    '.': ' ',
+    '_': '-'
   };
 
-  romanize(num: number): string | number {
-    if (isNaN(num)) {
-      return NaN;
+  romanize(num: number): string {
+    if (isNaN(num) || num === 0) {
+      return '';
     }
     const digits = String(+num).split('');
     let roman = '';
@@ -64,13 +65,17 @@ export class UtilsService {
     return Array(+digits.join('') + 1).join('M') + roman;
   }
 
-  sanitizeFileName(s: string, customRegex?: RegExp, customLettersObj?: { [key: string]: string }) {
-    const regex = customRegex || this.replaceStringRegex;
-    const lettersObj = customLettersObj || this.replaceStrings;
-    const string = s.replace(regex, (match: string) => {
-      return lettersObj[match];
-    });
-    return string.toLowerCase();
+  sanitizeFileName(courseName: string) {
+    const nameArray = courseName.split(' ');
+    let fileName = '';
+    for (let i = 0; i < nameArray.length; i++) {
+      if (i !== 0) {
+        fileName += '-';
+      }
+
+      fileName += this.sanitizeString(nameArray[i]);
+    }
+    return fileName;
   }
 
   public downloadDocument(filename: string, text: string): void {
@@ -85,5 +90,14 @@ export class UtilsService {
     } else {
       downloadElement.click();
     }
+  }
+
+  private sanitizeString(s: string, customRegex?: RegExp, customLettersObj?: { [key: string]: string }) {
+    const regex = customRegex || this.replaceStringRegex;
+    const lettersObj = customLettersObj || this.replaceStrings;
+    const string = s.replace(regex, (match: string) => {
+      return lettersObj[match];
+    });
+    return string.toLowerCase();
   }
 }

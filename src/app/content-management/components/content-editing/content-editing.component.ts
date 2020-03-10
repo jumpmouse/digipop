@@ -34,14 +34,7 @@ export class ContentEditingComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    const nameArray = this.title.split(' ');
-    let fileName = '';
-    for (let i = 0; i < nameArray.length; i++) {
-      if (i !== 0) {
-        fileName += '-';
-      }
-      fileName += this.utilsService.sanitizeFileName(nameArray[i]);
-    }
+    const fileName = this.utilsService.sanitizeFileName(this.title);
     this.utilsService.downloadDocument(fileName + '.txt', this.content);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmptySectionForEditing } from '../../constants/course-management.cont';
+import { EmptySectionForEditing } from '../../constants/course-management.const';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

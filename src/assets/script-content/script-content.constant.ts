@@ -9,144 +9,87 @@ export const SadrzajSkripte: Skripta = {
   opis:
     'Opširan opis skripte. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   predmeti: {
-    I: {
+    'I': {
       id: 'I',
       naziv: 'Opšta ekologija životinja',
       kratki_opis: 'Kratki opis predmeta. U dva reda, na primer. Mozda moze i u tri reda.',
       opis:
         'Dugacki opis predmeta. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-      link: 'opsta-ekologija-zivotinja',
+      link: 'I_opsta-ekologija-zivotinja',
       URL_slike: '',
       oblasti: {
-        I_1: {
-          id: 'I_1',
+       'I-1': {
+          id: 'I-1',
           naziv: 'Demografija',
           opis: 'opis oblasti',
-          link: 'demografija',
+          link: 'I-1_demografija',
           URL_slike: '',
           programske_celine: {
-            I_1_1: {
-              id: 'I_1_1',
+           'I-1-1': {
+              id: 'I-1-1',
               naziv: 'Uvod',
-              link: 'uvod',
+              link: 'I-1-1_uvod',
               URL_slike: '',
               tekst: '',
               podceline: {}
             },
-            I_1_2: {
-              id: 'I_1_2',
+           'I-1-2': {
+              id: 'I-1-2',
               naziv: 'Demografske tablice',
-              link: 'demografske-tablice',
+              link: 'I-1-2_demografske-tablice',
               URL_slike: '',
               podceline: {}
             },
-            I_1_3: {
-              id: 'I_1_3',
+           'I-1-3': {
+              id: 'I-1-3',
               naziv: 'Mortalitet',
-              link: 'mortalitet',
+              link: 'I-1-3_mortalitet',
               URL_slike: '',
               podceline: {
-                I_1_3_1: {
-                  id: 'I_1_3_1',
+               'I-1-3-1': {
+                  id: 'I-1-3-1',
                   naziv: 'Tipovi preživljavanja',
-                  link: 'tipovi-prezivljavanja',
+                  link: 'I-1-3-1_tipovi-prezivljavanja',
                   URL_slike: '',
                   podceline: {}
                 }
               }
             },
-            I_1_4: {
-              id: 'I_1_4',
+           'I-1-4': {
+              id: 'I-1-4',
               naziv: 'Natalitet',
-              link: 'natalitet',
+              link: 'I-1-4_natalitet',
               URL_slike: '',
               podceline: {}
             },
-            I_1_5: {
-              id: 'I_1_5',
+           'I-1-5': {
+              id: 'I-1-5',
               naziv: 'Uzrasna struktura',
-              link: 'uzrasna-struktura',
+              link: 'I-1-5_uzrasna-struktura',
               URL_slike: '',
               podceline: {
-                I_1_5_1: {
-                  id: 'I_1_5_1',
+               'I-1-5-1': {
+                  id: 'I-1-5-1',
                   naziv: 'Dostizanje stabilne uzrasne strukture',
-                  link: 'dostizanje-stabilne-uzrasne-strukture',
+                  link: 'I-1-5-1_dostizanje-stabilne-uzrasne-strukture',
                   URL_slike: '',
                   podceline: {}
                 }
               }
             }
           }
-        },
-        I_2: {
-          id: 'I_2',
-          naziv: 'Oblast 1',
-          opis: 'opis oblasti',
-          link: 'oblast-1',
-          URL_slike: '',
-          programske_celine: {}
-        },
-        I_3: {
-          id: 'I_3',
-          naziv: 'Oblast 2',
-          opis: 'opis oblasti',
-          link: 'oblast-2',
-          URL_slike: '',
-          programske_celine: {}
-        },
-        I_4: {
-          id: 'I_4',
-          naziv: 'Oblast 3',
-          opis: 'opis oblasti',
-          link: 'oblast-3',
-          URL_slike: '',
-          programske_celine: {}
         }
       }
     },
-    II: {
+   'II': {
       id: 'II',
       naziv: 'Populaciona ekologija životinja',
       kratki_opis: 'Kratki opis predmeta. U dva reda, na primer. Mozda moze i u tri reda.',
       opis:
         'Dugacki opis predmeta. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-      link: 'populaciona-ekologija-zivotinja',
+      link: 'II_populaciona-ekologija-zivotinja',
       URL_slike: '',
-      oblasti: {
-        II_1: {
-          id: 'II_1',
-          naziv: 'Oblast 1',
-          opis: 'opis oblasti',
-          link: 'oblast-1',
-          URL_slike: '',
-          programske_celine: {}
-        },
-        II_2: {
-          id: 'II_2',
-          naziv: 'Oblast 2',
-          opis: 'opis oblasti',
-          link: 'oblast-2',
-          URL_slike: '',
-          programske_celine: {}
-        },
-        II_3: {
-          id: 'II_3',
-          naziv: 'Oblast 3',
-          opis: 'opis oblasti',
-          link: 'oblast-3',
-          URL_slike: '',
-          programske_celine: {}
-        },
-        II_4: {
-          id: 'II_4',
-          naziv: 'Oblast 4',
-          opis: 'opis oblasti',
-          link: 'oblast-4',
-          URL_slike: '',
-          programske_celine: {}
-        }
-      }
+      oblasti: {}
     }
   }
 };

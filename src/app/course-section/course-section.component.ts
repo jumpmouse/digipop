@@ -16,50 +16,44 @@ export class CourseSectionComponent implements OnInit {
   course: ContentMetaData;
   content: string;
   section: any;
+  private courseLink: string;
+  private courseId: string;
+  private courseName: string;
+  private sectionLink: string;
+  private sectionId: string;
+  private sectionName: string;
+
+
+
+
+
+
 
   constructor(private route: ActivatedRoute, private scriptContentService: ScriptContentService) {}
 
   ngOnInit() {
     combineLatest([this.route.params, this.scriptContentService.scriptContent]).subscribe(([param, script]) => {
-      this.content = this.prepareContent(param, script);
+      const courseMetaData = param.courseName.split('_');
+      const sectionMetaData = param.sectionName.split('_');
+      this.courseLink = param.courseName;
+      this.courseId = courseMetaData[0];
+      this.courseName = courseMetaData[1];
+      this.sectionLink = param.sectionName;
+      this.sectionId = sectionMetaData[0];
+      this.sectionName = sectionMetaData[1];
+
+      this.content = this.prepareContent(script);
     });
   }
 
-  prepareContent(param: object, script: Skripta): string {
+  prepareContent(script: Skripta): string {
     let oblasti = '';
-    const predmeti = Object.entries(script.predmeti);
-    for (let i = 0; i < predmeti.length; i++) {
-      const predmet = predmeti[i][1];
-      // tslint:disable-next-line: no-string-literal
-      const courseName = param['courseName'];
-      // tslint:disable-next-line: no-string-literal
-      const sectionName = param['sectionName'];
+    this.section = script.predmeti[this.courseId].oblasti[this.sectionId];
 
-      if (courseName === predmet.link) {
-        const oblastiArray = Object.entries(predmet.oblasti);
-        for (let a = 0; a < oblastiArray.length; a++) {
-          const oblast = oblastiArray[a][1];
-          if (sectionName === oblast.link) {
-            this.section = oblast;
-            break;
-          }
-        }
-        break;
-      }
-    }
     for (let index = 0; index < this.section.programske_celine.length; index++) {
       const programskaCelina = this.section.programske_celine[index];
       oblasti += '<h3>' + programskaCelina.naziv + '</h3><p>' + programskaCelina.tekst + '</p>';
     }
     return oblasti;
-  }
-
-  prepareCourse(predmet: Predmet): ContentMetaData {
-    return {
-      title: predmet.naziv,
-      subtitle: '',
-      shortDescription: '',
-      description: predmet.opis
-    };
   }
 }

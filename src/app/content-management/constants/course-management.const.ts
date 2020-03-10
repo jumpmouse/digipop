@@ -13,6 +13,7 @@ export const EmptyScriptForEditing: SkriptaForEditing = {
 };
 
 export const EmptyCourseForEditing: PredmetForEditing = {
+  id: '',
   naziv: 'true',
   kratki_opis: '',
   opis: ''
