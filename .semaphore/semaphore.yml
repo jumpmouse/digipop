@@ -15,8 +15,6 @@ blocks:
             - cache restore
             - npm i
             - cache store
-      secrets:
-        - name: digipop ftp
       prologue:
         commands:
           - ls

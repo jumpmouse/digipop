@@ -11,10 +11,8 @@ blocks:
         - name: Staging
           commands:
             - checkout
-            - ls -la
             - cache restore website-build
-            - ls -la
-            - cd dist
-            - ls -la
+            - 'ftp -n -s:secrets/digipop.txt'
+            - echo "deploy successfull"
       secrets:
         - name: digipop ftp
