@@ -1,4 +1,3 @@
-# .semaphore/production-deploy.yml
 version: v1.0
 name: Deploy to production
 agent:
@@ -9,6 +8,6 @@ blocks:
   - name: Deploy
     task:
       jobs:
-        - name: 'Everything'
+        - name: Everything
           commands:
             - echo 'Deploying to production!'
