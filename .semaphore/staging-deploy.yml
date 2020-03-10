@@ -10,4 +10,6 @@ blocks:
       jobs:
         - name: Staging
           commands:
-            - echo 'Deploying to staging!'
+            - checkout
+            - cache restore website-build
+            - ls -la
