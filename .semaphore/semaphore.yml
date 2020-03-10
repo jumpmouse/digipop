@@ -15,15 +15,8 @@ blocks:
             - cache restore
             - npm i
             - cache store
-        - name: Lint and check code
-          commands:
-            - checkout
-            - nvm use 10
-            - cache restore
-            - npm run prettier
-            - 'npm run lint:fix'
-            - cache store
-  - name: Unit tests
+    dependencies: []
+  - name: Build app
     task:
       jobs:
         - name: Build
@@ -32,6 +25,19 @@ blocks:
             - cache restore
             - npm run build
             - cache store website-build dist
+    dependencies:
+      - Check code
+  - name: Check code
+    dependencies:
+      - Set things up
+    task:
+      jobs:
+        - name: lint and check
+          commands:
+            - checkout
+            - nvm use 10
+            - cache restore
+            - npm run lint
 promotions:
   - name: Production deploy
     pipeline_file: production-deploy.yml
