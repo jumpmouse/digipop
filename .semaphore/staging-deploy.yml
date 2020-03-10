@@ -13,3 +13,7 @@ blocks:
             - checkout
             - cache restore website-build
             - ls -la
+            - cd website-build
+            - ls -la
+            - cd ../dist
+            - ls -la
