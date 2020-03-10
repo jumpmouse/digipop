@@ -16,3 +16,5 @@ blocks:
             - ls -la
             - cd dist
             - ls -la
+      secrets:
+        - name: ftp digipop

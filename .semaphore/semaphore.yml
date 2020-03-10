@@ -15,6 +15,11 @@ blocks:
             - cache restore
             - npm i
             - cache store
+      secrets:
+        - name: ftp digipop
+      prologue:
+        commands:
+          - ls
     dependencies: []
     skip:
       when: branch != 'master'
