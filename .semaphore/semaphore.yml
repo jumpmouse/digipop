@@ -16,7 +16,7 @@ blocks:
             - npm i
             - cache store
       secrets:
-        - name: ftp digipop
+        - name: digipop ftp
       prologue:
         commands:
           - ls

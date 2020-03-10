@@ -17,4 +17,4 @@ blocks:
             - cd dist
             - ls -la
       secrets:
-        - name: ftp digipop
+        - name: digipop ftp
