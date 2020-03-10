@@ -1,0 +1,16 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Promotions
+    task:
+      jobs:
+        - name: Everything
+          commands:
+            - echo 'Running tests'
+promotions:
+  - name: Production deploy
+    pipeline_file: production-deploy.yml
