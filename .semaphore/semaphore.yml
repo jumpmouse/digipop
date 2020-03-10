@@ -8,18 +8,49 @@ blocks:
   - name: Set things up
     task:
       jobs:
-        - name: Compile
+        - name: Setup environment and install dependecies
           commands:
             - checkout
-            - echo "Linting code"
-            - echo "Compiling code"
-  - name: Unit tests
+            - nvm use 10
+            - cache restore
+            - npm i
+            - cache store
+    dependencies: []
+    skip:
+      when: branch != 'master'
+  - name: Build app
     task:
       jobs:
-        - name: Unit
+        - name: Build
           commands:
             - checkout
-            - echo "Running unit tests"
+            - nvm use 10
+            - cache restore
+            - npm run build
+            - cache store website-build dist
+    dependencies:
+      - Check code
+    skip:
+      when: branch != 'master'
+  - name: Check code
+    dependencies:
+      - Set things up
+    task:
+      jobs:
+        - name: lint and check
+          commands:
+            - checkout
+            - nvm use 10
+            - cache restore
+            - npm run lint
+    skip:
+      when: branch != 'master'
 promotions:
   - name: Production deploy
     pipeline_file: production-deploy.yml
+    auto_promote:
+      when: result = 'passed' and branch = 'master'
+  - name: Staging deploy
+    pipeline_file: staging-deploy.yml
+    auto_promote:
+      when: result = 'passed'
