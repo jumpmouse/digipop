@@ -11,9 +11,8 @@ blocks:
         - name: Staging
           commands:
             - checkout
+            - ls -la
             - cache restore website-build
             - ls -la
-            - cd website-build
-            - ls -la
-            - cd ../dist
+            - cd dist
             - ls -la

@@ -39,6 +39,8 @@ blocks:
             - nvm use 10
             - cache restore
             - npm run lint
+    skip:
+      when: branch != 'master'
 promotions:
   - name: Production deploy
     pipeline_file: production-deploy.yml
