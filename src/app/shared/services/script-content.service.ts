@@ -18,11 +18,12 @@ export class ScriptContentService {
   }
 
   public addUpdateCourse(course: Predmet) {
-
+    // TODO add or update course
+    this.utilsService.downloadDocument(course.link + '.txt', JSON.stringify(course));
   }
 
-  public addUpdateSection(section: Oblast, courseId: string) {
-
+  public addUpdateSection(section: Oblast) {
+    this.utilsService.downloadDocument(section.link + '.txt', JSON.stringify(section));
   }
 
   public setScriptContent(scriptObject: Skripta) {

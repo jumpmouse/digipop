@@ -23,12 +23,6 @@ export class CourseSectionComponent implements OnInit {
   private sectionId: string;
   private sectionName: string;
 
-
-
-
-
-
-
   constructor(private route: ActivatedRoute, private scriptContentService: ScriptContentService) {}
 
   ngOnInit() {

@@ -21,8 +21,7 @@ export const EmptyCourseForEditing: PredmetForEditing = {
 
 export const EmptySectionForEditing: OblastForEditing = {
   naziv: 'true',
-  opis: '',
-  programske_celine: null
+  opis: ''
 };
 
 export const EmtySubSectionForEditing: ProgramskaCelinaForEditing = {

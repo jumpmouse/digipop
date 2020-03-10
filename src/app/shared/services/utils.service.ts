@@ -97,7 +97,8 @@ export class UtilsService {
     const lettersObj = customLettersObj || this.replaceStrings;
     const string = s.replace(regex, (match: string) => {
       return lettersObj[match];
-    });
+    }).replace(/[^\w\s_-]/gi, '');
+
     return string.toLowerCase();
   }
 }

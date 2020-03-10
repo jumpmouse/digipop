@@ -18,6 +18,8 @@ export class AddEditCourseComponent implements OnInit {
   private currentCourse: Predmet;
   private courseName: string;
   private script: Skripta;
+  private courseId: string;
+  private courseLink: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,16 +29,15 @@ export class AddEditCourseComponent implements OnInit {
   
   ngOnInit(): void {
     combineLatest([this.route.params, this.scriptContentService.scriptContent]).subscribe(([param, script]) => {
-      this.courseName = param.courseName;
       this.script = script;
-      const allCourses = Object.values(script.predmeti);
-      for (let i = 0; i < allCourses.length; i++) {
-        const tempCourseName = this.utils.sanitizeFileName(allCourses[i].naziv);
-        if (tempCourseName === this.courseName) {
-          this.currentCourse = allCourses[i];
-          break;
-        }
+      if (param && param.courseName) {
+        const courseMetaData = param.courseName.split('_');
+        this.courseLink = param.courseName;
+        this.courseId = courseMetaData[0];
+        this.courseName = courseMetaData[1];
+        this.currentCourse = script.predmeti[this.courseId];
       }
+
       this.fields = Object.keys(this.content);
       this.labels = this.fields.map(label => {
         const required = !!this.content[label];
@@ -51,26 +52,22 @@ export class AddEditCourseComponent implements OnInit {
         };
       });
     });
-
-    this.route.params.subscribe(param => {
-    });
   }
 
   onSubmit(): void {
-    const fileName = this.utils.sanitizeFileName(this.content.naziv);
+    const fileName = this.getId() + '_' + this.utils.sanitizeFileName(this.content.naziv);
     const courseForUpdate: Predmet =
       Object.assign(
         {},
         this.content,
         {
-          link: fileName,
-          id: this.currentCourse.id || this.getId(),
-          oblasti: this.currentCourse.oblasti
+          link: this.currentCourse && this.currentCourse.link || fileName,
+          id: this.currentCourse && this.currentCourse.id || this.getId(),
+          oblasti: this.currentCourse && this.currentCourse.oblasti || {}
         }
       );
 
-      this.scriptContentService.addUpdateCourse(courseForUpdate);
-    // this.utils.downloadDocument(fileName || 'newsection' + '.txt', JSON.stringify(this.content));
+    this.scriptContentService.addUpdateCourse(courseForUpdate);
   }
 
   private getId(): string {
