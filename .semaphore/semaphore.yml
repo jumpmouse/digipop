@@ -5,12 +5,21 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Promotions
+  - name: Set things up
     task:
       jobs:
-        - name: Everything
+        - name: Compile
           commands:
-            - echo 'Running tests'
+            - checkout
+            - echo "Linting code"
+            - echo "Compiling code"
+  - name: Unit tests
+    task:
+      jobs:
+        - name: Unit
+          commands:
+            - checkout
+            - echo "Running unit tests"
 promotions:
   - name: Production deploy
     pipeline_file: production-deploy.yml
