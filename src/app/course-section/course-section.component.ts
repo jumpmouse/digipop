@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
-import {ContentMetaData, Skripta, Oblast, ProgramskaCelina } from '@app/models/skripta.model';
+import { ContentMetaData, Skripta, Oblast, ProgramskaCelina } from '@app/models/skripta.model';
 import { ActivatedRoute } from '@angular/router';
 import { ScriptContentService } from '@app/shared/services/script-content.service';
 import { combineLatest } from 'rxjs';

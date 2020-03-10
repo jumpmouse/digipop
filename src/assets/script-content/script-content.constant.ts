@@ -9,7 +9,7 @@ export const SadrzajSkripte: Skripta = {
   opis:
     'Opširan opis skripte. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   predmeti: {
-    'I': {
+    I: {
       id: 'I',
       naziv: 'Opšta ekologija životinja',
       kratki_opis: 'Kratki opis predmeta. U dva reda, na primer. Mozda moze i u tri reda.',
@@ -18,14 +18,14 @@ export const SadrzajSkripte: Skripta = {
       link: 'I_opsta-ekologija-zivotinja',
       URL_slike: '',
       oblasti: {
-       'I-1': {
+        'I-1': {
           id: 'I-1',
           naziv: 'Demografija',
           opis: 'opis oblasti',
           link: 'I-1_demografija',
           URL_slike: '',
           programske_celine: {
-           'I-1-1': {
+            'I-1-1': {
               id: 'I-1-1',
               naziv: 'Uvod',
               link: 'I-1-1_uvod',
@@ -33,7 +33,7 @@ export const SadrzajSkripte: Skripta = {
               tekst: 'uvodni tekst ovde',
               podceline: {}
             },
-           'I-1-2': {
+            'I-1-2': {
               id: 'I-1-2',
               naziv: 'Demografske tablice',
               link: 'I-1-2_demografske-tablice',
@@ -41,14 +41,14 @@ export const SadrzajSkripte: Skripta = {
               tekst: 'tekst demografskih tablica',
               podceline: {}
             },
-           'I-1-3': {
+            'I-1-3': {
               id: 'I-1-3',
               naziv: 'Mortalitet',
               link: 'I-1-3_mortalitet',
               URL_slike: '',
               tekst: 'tekst o mortalitetu',
               podceline: {
-               'I-1-3-1': {
+                'I-1-3-1': {
                   id: 'I-1-3-1',
                   naziv: 'Tipovi preživljavanja',
                   link: 'I-1-3-1_tipovi-prezivljavanja',
@@ -58,7 +58,7 @@ export const SadrzajSkripte: Skripta = {
                 }
               }
             },
-           'I-1-4': {
+            'I-1-4': {
               id: 'I-1-4',
               naziv: 'Natalitet',
               link: 'I-1-4_natalitet',
@@ -66,14 +66,14 @@ export const SadrzajSkripte: Skripta = {
               tekst: 'natalitet tekst',
               podceline: {}
             },
-           'I-1-5': {
+            'I-1-5': {
               id: 'I-1-5',
               naziv: 'Uzrasna struktura',
               link: 'I-1-5_uzrasna-struktura',
               URL_slike: '',
               tekst: 'tekst o uzrasnoj strukturi',
               podceline: {
-               'I-1-5-1': {
+                'I-1-5-1': {
                   id: 'I-1-5-1',
                   naziv: 'Dostizanje stabilne uzrasne strukture',
                   link: 'I-1-5-1_dostizanje-stabilne-uzrasne-strukture',
@@ -87,7 +87,7 @@ export const SadrzajSkripte: Skripta = {
         }
       }
     },
-   'II': {
+    II: {
       id: 'II',
       naziv: 'Populaciona ekologija životinja',
       kratki_opis: 'Kratki opis predmeta. U dva reda, na primer. Mozda moze i u tri reda.',

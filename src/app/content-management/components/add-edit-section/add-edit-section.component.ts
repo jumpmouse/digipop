@@ -25,8 +25,6 @@ export class AddEditSectionComponent implements OnInit {
   private sectionName: string;
   private currentSection: Oblast;
 
-
-
   constructor(
     private route: ActivatedRoute,
     private utils: UtilsService,
@@ -39,7 +37,7 @@ export class AddEditSectionComponent implements OnInit {
       this.courseLink = param.courseName;
       this.courseId = courseMetaData[0];
       this.courseName = courseMetaData[1];
-      this.currentCourse = script.predmeti[this.courseId]
+      this.currentCourse = script.predmeti[this.courseId];
       if (param.sectionName) {
         const sectionMetaData = param.sectionName.split('_');
         this.sectionLink = param.sectionName;
@@ -67,16 +65,11 @@ export class AddEditSectionComponent implements OnInit {
   onSubmit(): void {
     const fileName = this.getId() + '_' + this.utils.sanitizeFileName(this.content.naziv);
 
-      const sectionForUpdate: Oblast =
-      Object.assign(
-        {},
-        this.content,
-        {
-          link: this.currentSection && this.currentSection.link || fileName,
-          id: this.currentSection && this.currentSection.id || this.getId(),
-          programske_celine: this.currentSection && this.currentSection.programske_celine || {}
-        }
-      );
+    const sectionForUpdate: Oblast = Object.assign({}, this.content, {
+      link: (this.currentSection && this.currentSection.link) || fileName,
+      id: (this.currentSection && this.currentSection.id) || this.getId(),
+      programske_celine: (this.currentSection && this.currentSection.programske_celine) || {}
+    });
 
     this.scriptContentService.addUpdateSection(sectionForUpdate);
   }

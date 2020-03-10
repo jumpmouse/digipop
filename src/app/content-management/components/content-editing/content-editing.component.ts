@@ -15,10 +15,7 @@ export class ContentEditingComponent implements OnInit {
   public content = '';
   public title = 'xy-oblast';
 
-  constructor(
-    private utilsService: UtilsService,
-    private route: ActivatedRoute
-    ) {}
+  constructor(private utilsService: UtilsService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(param => {

@@ -39,9 +39,7 @@ export class SectionManagementComponent implements OnInit {
 
   prepareProjects(courseId: string, script: Skripta): Project[] {
     this.course = this.prepareCourse(script.predmeti[courseId]);
-    const oblasti: Project[] = 
-      Object.entries(script.predmeti[courseId].oblasti).map(
-        ([id, oblast]: [string, Oblast]) =>
+    const oblasti: Project[] = Object.entries(script.predmeti[courseId].oblasti).map(([id, oblast]: [string, Oblast]) =>
       this.projectsService.prepareProjectFromOblast(oblast, this.courseLink)
     );
     return oblasti;

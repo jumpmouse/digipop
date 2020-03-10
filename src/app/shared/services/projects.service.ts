@@ -12,17 +12,14 @@ export class ProjectsService {
   constructor(private utilsService: UtilsService) {}
 
   prepareProjectFromPredmet(predmet: Predmet, index: number): Project {
-    const sections: SimpleLinkObject[] = 
-      Object.entries(predmet.oblasti).map(
-        ([id, oblast]: [string, Oblast]) => {
-          const key = oblast.id.split('-').join('.') + '.';
-          return {
-            key,
-            name: oblast.naziv,
-            link: `${predmet.link}/${oblast.link}`
-          };
-        }
-      );
+    const sections: SimpleLinkObject[] = Object.entries(predmet.oblasti).map(([id, oblast]: [string, Oblast]) => {
+      const key = oblast.id.split('-').join('.') + '.';
+      return {
+        key,
+        name: oblast.naziv,
+        link: `${predmet.link}/${oblast.link}`
+      };
+    });
 
     return {
       id: predmet.id,
@@ -39,7 +36,7 @@ export class ProjectsService {
     const oblastKey = oblast.id.split('-').join('.') + '.';
     const oblastLink = parrentLink + '/' + oblast.link;
     this.sections = [];
-    
+
     const programskeCeline = Object.entries(oblast.programske_celine);
     for (let i = 0; i < programskeCeline.length; i++) {
       const programskaCelina = programskeCeline[i][1];
@@ -70,7 +67,6 @@ export class ProjectsService {
       sections: this.sections
     };
   }
-
 
   private addSubsectionsRecursively(podceline: ProgramskaCelina[], parrentLink: string): void {
     for (let i = 0; i < podceline.length; i++) {

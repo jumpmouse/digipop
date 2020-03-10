@@ -25,8 +25,8 @@ export class AddEditCourseComponent implements OnInit {
     private route: ActivatedRoute,
     private scriptContentService: ScriptContentService,
     private utils: UtilsService
-    ) {}
-  
+  ) {}
+
   ngOnInit(): void {
     combineLatest([this.route.params, this.scriptContentService.scriptContent]).subscribe(([param, script]) => {
       this.script = script;
@@ -56,16 +56,11 @@ export class AddEditCourseComponent implements OnInit {
 
   onSubmit(): void {
     const fileName = this.getId() + '_' + this.utils.sanitizeFileName(this.content.naziv);
-    const courseForUpdate: Predmet =
-      Object.assign(
-        {},
-        this.content,
-        {
-          link: this.currentCourse && this.currentCourse.link || fileName,
-          id: this.currentCourse && this.currentCourse.id || this.getId(),
-          oblasti: this.currentCourse && this.currentCourse.oblasti || {}
-        }
-      );
+    const courseForUpdate: Predmet = Object.assign({}, this.content, {
+      link: (this.currentCourse && this.currentCourse.link) || fileName,
+      id: (this.currentCourse && this.currentCourse.id) || this.getId(),
+      oblasti: (this.currentCourse && this.currentCourse.oblasti) || {}
+    });
 
     this.scriptContentService.addUpdateCourse(courseForUpdate);
   }
@@ -73,6 +68,5 @@ export class AddEditCourseComponent implements OnInit {
   private getId(): string {
     const courseOrderNumber = Object.keys(this.script.predmeti).length + 1;
     return this.utils.romanize(courseOrderNumber);
-
   }
 }

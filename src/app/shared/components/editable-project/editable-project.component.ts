@@ -34,8 +34,6 @@ export class EditableProjectComponent implements OnInit {
 
   private setupLink(): void {
     this.link =
-      this.projectType === 'course'
-        ? this.project.link
-        : '/content-management/' + this.project.link + '/edit'
+      this.projectType === 'course' ? this.project.link : '/content-management/' + this.project.link + '/edit';
   }
 }

@@ -49,7 +49,7 @@ export class UtilsService {
     Ž: 'Z',
     Š: 'S',
     '.': ' ',
-    '_': '-'
+    _: '-'
   };
 
   romanize(num: number): string {
@@ -95,9 +95,11 @@ export class UtilsService {
   private sanitizeString(s: string, customRegex?: RegExp, customLettersObj?: { [key: string]: string }) {
     const regex = customRegex || this.replaceStringRegex;
     const lettersObj = customLettersObj || this.replaceStrings;
-    const string = s.replace(regex, (match: string) => {
-      return lettersObj[match];
-    }).replace(/[^\w\s_-]/gi, '');
+    const string = s
+      .replace(regex, (match: string) => {
+        return lettersObj[match];
+      })
+      .replace(/[^\w\s_-]/gi, '');
 
     return string.toLowerCase();
   }
