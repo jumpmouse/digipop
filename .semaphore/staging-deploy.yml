@@ -1,4 +1,3 @@
-# .semaphore/staging-deploy.yml
 version: v1.0
 name: Promotions and Auto-promotions
 agent:

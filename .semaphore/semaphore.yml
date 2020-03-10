@@ -12,6 +12,8 @@ blocks:
           commands:
             - checkout
             - echo "Linting code"
+            - npm run prettier
+            - 'npm run lint:fix'
             - echo "Compiling code"
   - name: Unit tests
     task:
@@ -26,4 +28,4 @@ promotions:
   - name: Staging deploy
     pipeline_file: staging-deploy.yml
     auto_promote:
-      when: "result = 'passed'"
+      when: result = 'passed'
