@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
-import { Predmet, ContentMetaData, Skripta } from '@app/models/skripta.model';
+import {ContentMetaData, Skripta, Oblast, ProgramskaCelina } from '@app/models/skripta.model';
 import { ActivatedRoute } from '@angular/router';
 import { ScriptContentService } from '@app/shared/services/script-content.service';
 import { combineLatest } from 'rxjs';
@@ -15,7 +15,7 @@ export class CourseSectionComponent implements OnInit {
   version: string | null = environment.version;
   course: ContentMetaData;
   content: string;
-  section: any;
+  section: Oblast;
   private courseLink: string;
   private courseId: string;
   private courseName: string;
@@ -47,13 +47,33 @@ export class CourseSectionComponent implements OnInit {
   }
 
   prepareContent(script: Skripta): string {
-    let oblasti = '';
+    let content = '';
     this.section = script.predmeti[this.courseId].oblasti[this.sectionId];
-
-    for (let index = 0; index < this.section.programske_celine.length; index++) {
-      const programskaCelina = this.section.programske_celine[index];
-      oblasti += '<h3>' + programskaCelina.naziv + '</h3><p>' + programskaCelina.tekst + '</p>';
+    const programskeCeline = Object.entries(this.section.programske_celine);
+    for (let index = 0; index < programskeCeline.length; index++) {
+      const programskaCelina = programskeCeline[index][1];
+      content += '<h3>' + programskaCelina.naziv + '</h3><p>' + programskaCelina.tekst + '</p>';
+      content += `<h5>Zadaci</h5><h5>Diskusija</h5>`;
+      if (programskaCelina.podceline) {
+        const podceline = Object.values(programskaCelina.podceline);
+        content += this.addContentRecursively(podceline);
+      }
     }
-    return oblasti;
+    return content;
+  }
+
+  private addContentRecursively(section: ProgramskaCelina[]): string {
+    let subcontent = '';
+    const podceline = Object.entries(section);
+    for (let index = 0; index < podceline.length; index++) {
+      const podcelina = podceline[index][1];
+      subcontent += '<h4>' + podcelina.naziv + '</h4><p>' + podcelina.tekst + '</p>';
+      subcontent += `<h5>Zadaci</h5><h5>Diskusija</h5>`;
+      if (podcelina.podceline) {
+        const subPodceline = Object.values(podcelina.podceline);
+        subcontent += this.addContentRecursively(subPodceline);
+      }
+    }
+    return subcontent;
   }
 }

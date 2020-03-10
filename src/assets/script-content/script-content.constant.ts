@@ -30,7 +30,7 @@ export const SadrzajSkripte: Skripta = {
               naziv: 'Uvod',
               link: 'I-1-1_uvod',
               URL_slike: '',
-              tekst: '',
+              tekst: 'uvodni tekst ovde',
               podceline: {}
             },
            'I-1-2': {
@@ -38,6 +38,7 @@ export const SadrzajSkripte: Skripta = {
               naziv: 'Demografske tablice',
               link: 'I-1-2_demografske-tablice',
               URL_slike: '',
+              tekst: 'tekst demografskih tablica',
               podceline: {}
             },
            'I-1-3': {
@@ -45,12 +46,14 @@ export const SadrzajSkripte: Skripta = {
               naziv: 'Mortalitet',
               link: 'I-1-3_mortalitet',
               URL_slike: '',
+              tekst: 'tekst o mortalitetu',
               podceline: {
                'I-1-3-1': {
                   id: 'I-1-3-1',
                   naziv: 'Tipovi preživljavanja',
                   link: 'I-1-3-1_tipovi-prezivljavanja',
                   URL_slike: '',
+                  tekst: 'tekst o tipovima prezivljavanja',
                   podceline: {}
                 }
               }
@@ -60,6 +63,7 @@ export const SadrzajSkripte: Skripta = {
               naziv: 'Natalitet',
               link: 'I-1-4_natalitet',
               URL_slike: '',
+              tekst: 'natalitet tekst',
               podceline: {}
             },
            'I-1-5': {
@@ -67,12 +71,14 @@ export const SadrzajSkripte: Skripta = {
               naziv: 'Uzrasna struktura',
               link: 'I-1-5_uzrasna-struktura',
               URL_slike: '',
+              tekst: 'tekst o uzrasnoj strukturi',
               podceline: {
                'I-1-5-1': {
                   id: 'I-1-5-1',
                   naziv: 'Dostizanje stabilne uzrasne strukture',
                   link: 'I-1-5-1_dostizanje-stabilne-uzrasne-strukture',
                   URL_slike: '',
+                  tekst: 'tekst o tome kako se dostize stabilna uzrasna struktura',
                   podceline: {}
                 }
               }
