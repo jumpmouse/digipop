@@ -16,6 +16,8 @@ blocks:
             - npm i
             - cache store
     dependencies: []
+    skip:
+      when: branch != 'master
   - name: Build app
     task:
       jobs:
@@ -28,6 +30,8 @@ blocks:
             - cache store website-build dist
     dependencies:
       - Check code
+    skip:
+      when: branch != 'master'
   - name: Check code
     dependencies:
       - Set things up
