@@ -16,7 +16,7 @@ blocks:
             - echo "evo liste POSLE svega"
             - ls -la
             - echo "============================="
-            - cat deploy-script.js
+            - cat deploy/deploy-script.js
             - npm run deploy
             - echo "deploy successfull"
       secrets:
