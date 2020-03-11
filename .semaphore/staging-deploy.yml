@@ -10,25 +10,12 @@ blocks:
       jobs:
         - name: Staging
           commands:
-            - pwd
-            - checkout
             - nvm use 10
+            - checkout
+            - cache restore
             - cache restore website-build
-            - npm i
-            - echo "evo liste POSLE svega"
-            - pwd
-            - ls -la
-            - cd ..
             - cp ~/deploy/* ~/digipop/
-            - cd digipop
-            - ls -l
-            - echo "============================="
             - node deploy-script.js
             - echo "deploy successfull"
       secrets:
         - name: digipop ftp
-      prologue:
-        commands:
-          - echo "evo liste pre svega"
-          - ls -la
-          - echo "============================="
