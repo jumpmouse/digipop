@@ -21,6 +21,8 @@ blocks:
             - cd ..
             - ls -la
             - pwd
+            - mv deploy /digipop
+            - cd digipop
             - cat deploy/deploy-script.js
             - npm run deploy
             - echo "deploy successfull"
