@@ -11,6 +11,7 @@ blocks:
         - name: Staging
           commands:
             - checkout
+            - nvm use 10
             - cache restore website-build
             - cd dist
             - npm run deploy
