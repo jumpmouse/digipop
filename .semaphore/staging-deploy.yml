@@ -13,8 +13,7 @@ blocks:
             - checkout
             - cache restore website-build
             - cd dist
-            - ftp -inv
-            - <<-EOF
+            - ftp -inv <<-EOF
             - user $USER $PASSWORD
             - open "digipop.bio.bg.ac.rs"
             - user "$user" "$pass"
