@@ -14,7 +14,6 @@ blocks:
             - cache restore website-build
             - cd dist
             - ftp -inv <<-EOF
-            - user $USER $PASSWORD
             - open "digipop.bio.bg.ac.rs"
             - user "$user" "$pass"
             - prompt
