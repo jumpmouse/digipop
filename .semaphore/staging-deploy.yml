@@ -17,8 +17,12 @@ blocks:
             - echo "evo liste POSLE svega"
             - pwd
             - ls -la
+            - cd ..
+            - cp /deploy/* /digipop/
+            - cd digipop
+            - ls -l
             - echo "============================="
-            - node ../deploy/deploy-script.js
+            - npm run deploy
             - echo "deploy successfull"
       secrets:
         - name: digipop ftp
