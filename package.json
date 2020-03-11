@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "build": "npm run env -s && ng build --prod",
+    "deploy": "node deploy",
     "start": "npm run env -s && ng serve --proxy-config proxy.conf.js",
     "serve:sw": "npm run build -s && npx http-server ./dist -p 4200",
     "lint": "ng lint && stylelint \"src/**/*.scss\" --syntax scss && htmlhint \"src\" --config .htmlhintrc",
@@ -54,6 +55,7 @@
     "@types/jest": "^24.0.12",
     "@types/node": "^10.9.0",
     "codelyzer": "^5.1.0",
+    "ftp-deploy": "^2.3.6",
     "hads": "^1.7.0",
     "htmlhint": "^0.11.0",
     "https-proxy-agent": "^2.0.0",
