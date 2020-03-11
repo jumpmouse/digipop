@@ -54,6 +54,7 @@
     "@types/jest": "^24.0.12",
     "@types/node": "^10.9.0",
     "codelyzer": "^5.1.0",
+    "ftp-deploy": "^2.3.6",
     "hads": "^1.7.0",
     "htmlhint": "^0.11.0",
     "https-proxy-agent": "^2.0.0",
