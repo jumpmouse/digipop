@@ -12,7 +12,27 @@ blocks:
           commands:
             - checkout
             - cache restore website-build
-            - 'ftp -n -s:secrets/digipop.txt'
+            - cd dist
+            - ftp -inv <<EOF
+            - user $USER $PASSWORD
+            - open "digipop.bio.bg.ac.rs"
+            - user "$user" "$pass"
+            - prompt
+            - mdelete *
+            - cd assets/
+            - mdelete *
+            - cd script-content/
+            - mdelete *
+            - lcd assets/script-content/
+            - mput *
+            - cd ..
+            - lcd ..
+            - mput *
+            - cd ..
+            - lcd ..
+            - mput *
+            - bye
+            - EOF
             - echo "deploy successfull"
       secrets:
         - name: digipop ftp
