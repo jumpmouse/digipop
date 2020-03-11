@@ -34,7 +34,7 @@ blocks:
       when: branch == 'aaaaa'
   - name: Check code
     dependencies:
-      - Set things up
+      - Set up environment
     task:
       jobs:
         - name: Lint code
