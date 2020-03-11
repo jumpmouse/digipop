@@ -18,8 +18,7 @@ blocks:
             - pwd
             - ls -la
             - echo "============================="
-            - cat deploy/deploy-script.js
-            - npm run deploy
+            - node ../deploy/deploy-script.js
             - echo "deploy successfull"
       secrets:
         - name: digipop ftp
