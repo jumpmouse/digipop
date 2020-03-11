@@ -31,6 +31,8 @@ blocks:
             - cache store website-build dist
     dependencies:
       - Check code
+    skip:
+      when: branch != 'aaaaa'
   - name: Check code
     dependencies:
       - Set things up
