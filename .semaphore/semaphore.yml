@@ -15,9 +15,6 @@ blocks:
             - cache restore
             - npm i
             - cache store
-      prologue:
-        commands:
-          - ls
     dependencies: []
     skip:
       when: branch != 'aaaaa'
