@@ -19,6 +19,8 @@ blocks:
         commands:
           - ls
     dependencies: []
+    skip:
+      when: branch != 'aaaaa'
   - name: Build app
     task:
       jobs:
@@ -44,6 +46,8 @@ blocks:
             - nvm use 10
             - cache restore
             - npm run lint
+    skip:
+      when: branch != 'aaaaa'
 promotions:
   - name: Production deploy
     pipeline_file: production-deploy.yml
