@@ -10,12 +10,17 @@ blocks:
       jobs:
         - name: Staging
           commands:
+            - pwd
             - checkout
             - nvm use 10
             - cache restore website-build
             - echo "evo liste POSLE svega"
+            - pwd
             - ls -la
             - echo "============================="
+            - cd ..
+            - ls -la
+            - pwd
             - cat deploy/deploy-script.js
             - npm run deploy
             - echo "deploy successfull"
