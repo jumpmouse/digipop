@@ -13,7 +13,7 @@ blocks:
             - checkout
             - nvm use 10
             - cache restore website-build
-            - cd dist
+            = cat deploy-script.js
             - npm run deploy
             - echo "deploy successfull"
       secrets:
