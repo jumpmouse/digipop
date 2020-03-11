@@ -14,6 +14,7 @@ blocks:
             - checkout
             - nvm use 10
             - cache restore website-build
+            - npm i
             - echo "evo liste POSLE svega"
             - pwd
             - ls -la
