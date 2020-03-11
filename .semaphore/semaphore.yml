@@ -17,7 +17,7 @@ blocks:
             - cache store
     dependencies: []
     skip:
-      when: branch == 'aaaaa'
+      when: branch = 'aaaaa'
   - name: Build app
     task:
       jobs:
@@ -31,7 +31,7 @@ blocks:
     dependencies:
       - Check code
     skip:
-      when: branch == 'aaaaa'
+      when: branch = 'aaaaa'
   - name: Check code
     dependencies:
       - Set up environment
@@ -44,7 +44,7 @@ blocks:
             - cache restore
             - npm run lint
     skip:
-      when: branch == 'aaaaa'
+      when: branch = 'aaaaa'
 promotions:
   - name: Production deploy
     pipeline_file: production-deploy.yml
