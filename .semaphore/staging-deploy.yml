@@ -23,7 +23,7 @@ blocks:
             - cd digipop
             - ls -l
             - echo "============================="
-            - npm run deploy
+            - node deploy-script.js
             - echo "deploy successfull"
       secrets:
         - name: digipop ftp
