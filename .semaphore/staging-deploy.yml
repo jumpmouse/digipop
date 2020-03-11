@@ -13,9 +13,11 @@ blocks:
             - checkout
             - nvm use 10
             - cache restore website-build
+            - echo "evo liste POSLE svega"
             - ls -la
-            - '# cat deploy/deploy-script.js'
-            - '# npm run deploy'
+            - echo "============================="
+            - cat deploy-script.js
+            - npm run deploy
             - echo "deploy successfull"
       secrets:
         - name: digipop ftp
