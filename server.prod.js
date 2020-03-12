@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 const app = express();
 
-app.get('*.*', express.static(__dirname + '/dist', {
+app.get('*.*', express.static(__dirname, {
     maxAge: '1m'
 }));
 
@@ -16,7 +16,7 @@ app.post('/api/*', (req, res) => {
 });
 
 app.route('*').get((req, res) => {
-  res.sendFile(__dirname + '/dist/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.listen(PORT, () => {
