@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "build": "npm run env -s && ng build --prod && cp server.prod.js dist/server.js",
+    "build": "npm run env -s && ng build --prod",
     "start": "npm run env -s && ng serve",
-    "serve:sw": "npm run build -s && npx http-server ./dist -p 4300",
+    "serve:sw": "npm run build -s && npx http-server ./dist -p 4200",
     "lint": "ng lint && stylelint \"src/**/*.scss\" --syntax scss && htmlhint \"src\" --config .htmlhintrc",
     "lint:fix": "ng lint --fix && stylelint \"src/**/*.scss\" --syntax scss && htmlhint \"src\" --config .htmlhintrc",
     "test": "npm run env -s && ng test",
@@ -18,8 +18,7 @@
     "prettier:check": "prettier --list-different \"./src/**/*.{ts,js,html,scss}\"",
     "pretty-quick": "pretty-quick --staged",
     "postinstall": "npm run prettier -s",
-    "generate": "ng generate",
-    "server": "npm run env && node server"
+    "generate": "ng generate"
   },
   "dependencies": {
     "@angular/animations": "^8.1.0",
@@ -54,9 +53,7 @@
     "@types/jasminewd2": "^2.0.3",
     "@types/jest": "^24.0.12",
     "@types/node": "^10.9.0",
-    "body-parser": "^1.19.0",
     "codelyzer": "^5.1.0",
-    "express": "^4.17.1",
     "ftp-deploy": "^2.3.6",
     "hads": "^1.7.0",
     "htmlhint": "^0.11.0",
