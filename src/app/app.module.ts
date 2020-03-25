@@ -13,7 +13,6 @@ import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CourseSectionModule } from './course-section/course-section.module';
-import { ContentManagementModule } from './content-management/content-management.module';
 
 @NgModule({
   imports: [
@@ -25,7 +24,6 @@ import { ContentManagementModule } from './content-management/content-management
     ShellModule,
     HomeModule,
     AboutModule,
-    ContentManagementModule,
     CourseModule,
     CourseSectionModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route

@@ -7,14 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class QueryService {
   constructor(private http: HttpClient) {}
-
-  postJSONData(
+  getJSONData(
     resource: 'script' | 'content' = 'script',
-    requestBody: object,
     parameters?: object
   ): Observable<object> {
-    const body = new Blob([JSON.stringify(requestBody)], { type: 'application/json' });
     const headers = new HttpHeaders({ 'Content-Type': 'application/JSON' });
-    return this.http.request('post', `/${resource}`, { body, headers });
+    return this.http.request('get', `/${resource}`, { headers });
   }
 }
