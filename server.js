@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require("body-parser");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+console.log(process.env.hmr, process.env.defaultLanguage);
 app.get('*.*', express.static(__dirname + '/dist', {
     maxAge: '1m'
 }));
