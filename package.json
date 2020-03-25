@@ -18,7 +18,8 @@
     "prettier:check": "prettier --list-different \"./src/**/*.{ts,js,html,scss}\"",
     "pretty-quick": "pretty-quick --staged",
     "postinstall": "npm run prettier -s",
-    "generate": "ng generate"
+    "generate": "ng generate",
+    "server": "npm run env && node server"
   },
   "dependencies": {
     "@angular/animations": "^8.1.0",
